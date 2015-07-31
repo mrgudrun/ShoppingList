@@ -21,7 +21,7 @@ var chalk = require('chalk');
 /*
  * Location of your backend server
  */
-var proxyTarget = 'http://localhost:6060';
+var proxyTarget = 'http://localhost:49159';
 
 var proxy = httpProxy.createProxyServer({
   target: proxyTarget
@@ -43,8 +43,8 @@ function proxyMiddleware(req, res, next) {
   /*
    * Test for API request.
    */
-    if (req.url.indexOf('/flow/api') === 0) {
-        req.url = req.url.substr(5);
+    if (req.url.indexOf('/webapi/api') === 0) {
+        req.url = req.url.substr(7);
         proxy.web(req, res);
     } else {
       next();

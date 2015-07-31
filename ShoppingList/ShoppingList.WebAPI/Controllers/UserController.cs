@@ -21,9 +21,10 @@ namespace ShoppingList.WebAPI.Controllers
         }
         [HttpPost]
         [Route("api/user/login")]
-        public UserModel Login(string username, string password)
+        public UserModel Login([FromBody] object ovject)
         {
-            return _user.GetUserByLogin(username, password);
+            var oob = ovject;
+            return _user.GetUserByLogin("runarTest", "runar");
         }
 
 

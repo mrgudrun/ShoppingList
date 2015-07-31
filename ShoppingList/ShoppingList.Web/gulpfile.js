@@ -1,5 +1,5 @@
 ﻿/// <binding BeforeBuild='bower' AfterBuild='build' Clean='clean' />
-//'use strict';
+'use strict';
 
 var gulp = require('gulp');
 
