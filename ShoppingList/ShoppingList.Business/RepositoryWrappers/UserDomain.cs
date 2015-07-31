@@ -22,5 +22,10 @@ namespace ShoppingList.Domain.RepositoryWrappers
         {
            return _userRespository.GetById(id);
         }
+
+        public UserModel GetUserByLogin(string userName, string password)
+        {
+            return _userRespository.GetUserByLogin(userName, password);
+        }
     }
 }

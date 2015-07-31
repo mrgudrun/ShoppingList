@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using ShoppingList.EFModel;
 using ShoppingList.EFModel.Entities;
 using ShoppingList.Infrastructure.Interfaces;
@@ -20,6 +21,15 @@ namespace ShoppingList.Repository.Repositories
             using (var context = new ShoppingListContext())
             {
                 return new List<UserModel>() { new UserModel { Username = "Runar" }, new UserModel { Username = "Elin" } };
+            }
+        }
+
+        public UserModel GetUserByLogin(string userName, string password)
+        {
+            using (var context = new ShoppingListContext())
+            {
+                var efUser = context.Users.FirstOrDefault(x => x.Username.Equals(userName, StringComparison.InvariantCultureIgnoreCase));
+                return efUser != null ? UserMapper.Mapping(efUser) : null;
             }
         }
     }
