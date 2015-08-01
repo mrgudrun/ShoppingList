@@ -19,6 +19,6 @@ angular.module('app.login')
                         $scope.dataLoading = false;
                     }
                 });
-            };
+            }; 
         }
     ]);

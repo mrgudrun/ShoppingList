@@ -2,7 +2,7 @@
 
 var gulp = require('gulp');
 
-var paths = gulp.paths;
+var paths = gulp.paths; 
 
 var util = require('util');
 

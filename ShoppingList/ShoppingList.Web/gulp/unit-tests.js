@@ -5,7 +5,7 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 var wiredep = require('wiredep');
-
+ 
 var paths = gulp.paths;
 
 function runTests (singleRun, done) {
