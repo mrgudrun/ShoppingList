@@ -211,3 +211,4 @@ GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
 /ShoppingList/ShoppingList.Web/wwwroot
+/ShoppingList/ShoppingList.Web/bower_components
