@@ -5,7 +5,7 @@ angular.module('app.login', [])
 .factory('authenticationService', ['$base64', '$http', '$cookieStore', '$rootScope', '$timeout', 'loggedInUserFactory',
     function ($base64, $http, $cookieStore, $rootScope, $timeout, loggedInUserFactory) {
         var service = {};
-
+         
         service.Login = function (username, password, callback) {
 
             /* Use this for real authentication

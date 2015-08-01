@@ -19,6 +19,9 @@ angular.module('app.login').factory('loggedInUserFactory', function loggedInUser
             //            callback();
             //    });
             //}
+
+
+
         }
     }
 
