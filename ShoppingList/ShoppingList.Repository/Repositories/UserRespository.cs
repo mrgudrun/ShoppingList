@@ -24,11 +24,13 @@ namespace ShoppingList.Repository.Repositories
             }
         }
 
-        public UserModel GetUserByLogin(string userName, string password)
+        public UserModel TryLoginUser(string userName, string password)
         {
             using (var context = new ShoppingListContext())
             {
-                var efUser = context.Users.FirstOrDefault(x => x.Username.Equals(userName, StringComparison.InvariantCultureIgnoreCase));
+                var efUser = context.Users.FirstOrDefault(x => 
+                x.Username.Equals(userName, StringComparison.InvariantCultureIgnoreCase)
+                && x.Password.Equals(password, StringComparison.InvariantCulture));
                 return efUser != null ? UserMapper.Mapping(efUser) : null;
             }
         }

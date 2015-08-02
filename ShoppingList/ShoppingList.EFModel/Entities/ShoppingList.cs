@@ -12,6 +12,6 @@ namespace ShoppingList.EFModel.Entities
 
         public string Name { get; set; }
 
-        public ICollection<Item> Items { get; set; }
+        public ICollection<ShoppingItem> Items { get; set; }
     }
 }

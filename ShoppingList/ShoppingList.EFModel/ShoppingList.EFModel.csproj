@@ -59,6 +59,10 @@
     <Compile Include="Migrations\201507282033317_AddedShoppingAndItems.Designer.cs">
       <DependentUpon>201507282033317_AddedShoppingAndItems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201508022010083_AddedPasswordToUser.cs" />
+    <Compile Include="Migrations\201508022010083_AddedPasswordToUser.Designer.cs">
+      <DependentUpon>201508022010083_AddedPasswordToUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ShoppingListContext.cs" />
     <Compile Include="Entities\User.cs" />
@@ -74,6 +78,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201507282033317_AddedShoppingAndItems.resx">
       <DependentUpon>201507282033317_AddedShoppingAndItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508022010083_AddedPasswordToUser.resx">
+      <DependentUpon>201508022010083_AddedPasswordToUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -13,7 +13,7 @@ angular.module('app.login', [])
             $http.post('/webapi/api/user/login', { username: username, password: password })
                 .success(function (response) {
                     callback(response);
-                    $rootScope.globals.currentUser.id = response.UserId;
+                    $rootScope.globals.currentUser.Username = response.Username;
                     $cookieStore.put('globals', $rootScope.globals);
                     loggedInUserFactory.refresh();
                 })

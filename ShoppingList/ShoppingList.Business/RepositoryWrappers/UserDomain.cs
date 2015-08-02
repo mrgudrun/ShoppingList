@@ -25,7 +25,7 @@ namespace ShoppingList.Domain.RepositoryWrappers
 
         public UserModel GetUserByLogin(string userName, string password)
         {
-            return _userRespository.GetUserByLogin(userName, password);
+            return _userRespository.TryLoginUser(userName, password);
         }
     }
 }

@@ -19,8 +19,6 @@ namespace ShoppingList.WebAPI.Controllers
         {
             return _user.GetUserById(id);
         }
-        [HttpPost]
-        [Route("api/user/login")]
         public UserModel Login([FromBody] object ovject)
         {
             var oob = ovject;

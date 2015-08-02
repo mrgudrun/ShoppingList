@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ShoppingList.EFModel.Entities
 {
-    public class Item
+    public class ShoppingItem
     {
         public int Id { get; set; }
 
