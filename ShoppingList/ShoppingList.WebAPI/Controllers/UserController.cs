@@ -3,6 +3,7 @@ using System.Linq;
 using System.Web.Http;
 using ShoppingList.Domain.RepositoryWrappers;
 using ShoppingList.Infrastructure.Models;
+using ShoppingList.Infrastructure.Models.Security;
 
 namespace ShoppingList.WebAPI.Controllers
 {
@@ -19,13 +20,11 @@ namespace ShoppingList.WebAPI.Controllers
         {
             return _user.GetUserById(id);
         }
-        public UserModel Login([FromBody] object ovject)
+    
+        public UserModel Login([FromBody] LoginRequest loginRequest)
         {
-            var oob = ovject;
-            return _user.GetUserByLogin("runarTest", "runar");
+            return _user.GetUserByLogin(loginRequest.Username, loginRequest.Password);
         }
-
-
         public IEnumerable<UserModel> GetAllUsers()
         {
          

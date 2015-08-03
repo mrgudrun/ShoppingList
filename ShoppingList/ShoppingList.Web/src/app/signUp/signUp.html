@@ -1,3 +1,9 @@
-﻿<div>
-    <h1>SignUp</h1>
+﻿<div class="container" ng-app="app.signUp" ng-controller="SignUpController">
+    <form name="form" role="form" ng-submit="signUp()">
+        <h2 class="h1">Create new user</h2> 
+
+        <input type="text" ng-model="username" class="form-control" placeholder="Username" required autofocus>
+        <input type="password" ng-model="password" class="form-control" placeholder="Password" required>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    </form>
 </div>

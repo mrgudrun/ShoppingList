@@ -2,7 +2,7 @@
 
 angular.module('app.login').factory('loggedInUserFactory', function loggedInUserFactory( $rootScope) {
     var vm = this;
-
+     
     vm.refresh = function (callback) {
         if ($rootScope.globals !== undefined && $rootScope.globals.currentUser !== undefined) {
             vm.id = $rootScope.globals.currentUser.id;
