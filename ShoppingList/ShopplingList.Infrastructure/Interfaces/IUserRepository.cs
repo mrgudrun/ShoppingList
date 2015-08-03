@@ -7,5 +7,8 @@ namespace ShoppingList.Infrastructure.Interfaces
     {
         IEnumerable<UserModel> GetUsers();
         UserModel TryLoginUser(string userName, string password);
+
+        UserModel TryCreateUser(string username, string password, out string message);
+
     }
 }

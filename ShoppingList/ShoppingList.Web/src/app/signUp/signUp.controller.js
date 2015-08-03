@@ -9,10 +9,7 @@ angular.module('app.signUp')
 
             signUpService.SignUp($scope.username, $scope.password, callback);
             console.log("first?!??!");
-
         };
-
-
     }]);
 
 var callback = function () {

@@ -34,5 +34,26 @@ namespace ShoppingList.Repository.Repositories
                 return efUser != null ? UserMapper.Mapping(efUser) : null;
             }
         }
+
+        public UserModel TryCreateUser(string username, string password, out string message)
+        {
+            message = "";
+            using (var context = new ShoppingListContext())
+            {
+                var userExists = context.Users.Any(x => x.Username.Equals(username, StringComparison.InvariantCultureIgnoreCase));
+                User user = null;
+                if (!userExists)
+                {
+                    user = new User() {Username = username, Password = password};
+                    context.Users.Add(user);
+                    context.SaveChanges();
+                }
+                else
+                {
+                    message = "User already exists";
+                }
+                return user != null ? UserMapper.Mapping(user) : null;
+            }
+        }
     }
 }
