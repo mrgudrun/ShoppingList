@@ -11,9 +11,9 @@ angular.module('app.login', [])
             /* Use this for real authentication
              ----------------------------------------------*/
             $http.post('/webapi/api/user/login', { username: username, password: password })
-                .success(function (response) {
-                    callback(response);
-                    $rootScope.globals.currentUser.Username = response.Username;
+                .success(function (userModel) {
+                    callback(userModel);
+                    $rootScope.globals.currentUser.Username = userModel.Username;
                     $cookieStore.put('globals', $rootScope.globals);
                     loggedInUserFactory.refresh();
                 })

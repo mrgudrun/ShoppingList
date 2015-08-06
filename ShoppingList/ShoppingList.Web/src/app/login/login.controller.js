@@ -10,8 +10,10 @@ angular.module('app.login')
             console.log("Im in login");
             $scope.login = function() {
                 $scope.dataLoading = true;
-                authenticationService.Login($scope.username, $scope.password, function(response) {
-                    if (response.Success) {
+                authenticationService.Login($scope.username, $scope.password, function (userModel) {
+                    
+                    if (userModel != null) {
+                        console.log(userModel);
                         authenticationService.SetCredentials($scope.username, $scope.password);
                         $location.path('/index/main');
                     } else {
@@ -19,6 +21,6 @@ angular.module('app.login')
                         $scope.dataLoading = false;
                     }
                 });
-            }; 
+            };
         }
-    ])
+    ]);
