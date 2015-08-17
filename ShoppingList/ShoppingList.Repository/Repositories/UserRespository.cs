@@ -12,7 +12,7 @@ namespace ShoppingList.Repository.Repositories
     public class UserRespository : RepositoryBase<UserModel, User>, IUserRepository
     {
 
-        public UserRespository() : base(UserMapper.Mapping)
+        public UserRespository() : base(new UserMapper())
         {
         }
 
@@ -31,7 +31,7 @@ namespace ShoppingList.Repository.Repositories
                 var efUser = context.Users.FirstOrDefault(x => 
                 x.Username.Equals(userName, StringComparison.InvariantCultureIgnoreCase)
                 && x.Password.Equals(password, StringComparison.InvariantCulture));
-                return efUser != null ? UserMapper.Mapping(efUser) : null;
+                return efUser != null ? Map(efUser) : null;
             }
         }
 
@@ -52,7 +52,7 @@ namespace ShoppingList.Repository.Repositories
                 {
                     message = "User already exists";
                 }
-                return user != null ? UserMapper.Mapping(user) : null;
+                return user != null ? Map(user) : null;
             }
         }
     }

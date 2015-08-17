@@ -10,5 +10,6 @@ namespace ShoppingList.Infrastructure.Interfaces
     public interface IRepositoryBase<out TModel>
     {
         TModel GetById(int id);
+        bool Delete(int id);
     }
 }

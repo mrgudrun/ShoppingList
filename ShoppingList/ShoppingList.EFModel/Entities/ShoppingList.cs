@@ -8,6 +8,10 @@ namespace ShoppingList.EFModel.Entities
 {
     public class ShoppingList
     {
+        public ShoppingList()
+        {
+            Items = new HashSet<ShoppingItem>();
+        }
         public int Id { get; set; }
 
         public string Name { get; set; }

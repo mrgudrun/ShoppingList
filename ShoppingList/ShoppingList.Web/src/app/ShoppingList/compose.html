@@ -1,5 +1,26 @@
 ﻿<div class="container" ng-app="app.composetest" ng-controller="ComposeController">
 
-bfvbcvbc
+    <div>
+        <h1>todos</h1>
+        <form id="todo-form" ng-submit="addShoppingItem()">
+            <input id="new-todo" placeholder="What needs to be bought?" ng-model="model.itemEdit" autofocus>
+        </form>
+    </div>
 
+    <div ng-show="model.shoppingItems.length">
+        <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+        <label for="toggle-all">Mark all as complete</label>
+        <ul class="list-group">
+            <li class="list-group-item" ng-repeat="shoppingItem in model.shoppingItems">
+                <div class="row">
+                    <input type="checkbox">
+                    <label >{{shoppingItem.name}}</label>
+                    <span class="glyphicon glyphicon-remove-circle" ng-click="removeItem(shoppingItem)"></span>
+                </div>
+                <!--<form ng-submit="doneEditing(todo)">
+                    <input class="edit" ng-trim="false" ng-model="todo.title" ng-blur="doneEditing(todo)" todo-escape="revertEditing(todo)" todo-focus="todo == editedTodo">
+                </form>-->
+            </li>
+        </ul>
+    </div>
 </div>

@@ -10,6 +10,8 @@ namespace ShoppingList.Repository
         public void Configure(Container container)
         {
             container.Register<IUserRepository, UserRespository>(); 
+            container.Register<IShoppingItemRepository, ShoppingItemRepository>(); 
+            container.Register<IShoppingListRepository, ShoppingListRepository>(); 
         }
     }
 }

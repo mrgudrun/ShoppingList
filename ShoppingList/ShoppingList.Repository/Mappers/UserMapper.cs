@@ -3,9 +3,10 @@ using ShoppingList.Infrastructure.Models;
 
 namespace ShoppingList.Repository.Mappers
 {
-    public static class UserMapper
+    public class UserMapper : IMapper<UserModel, User>
     {
-        public static UserModel Mapping(User efUser)
+
+        public UserModel Map(User efUser)
         {
             var userModel = new UserModel();
             userModel.Username = efUser.Username;

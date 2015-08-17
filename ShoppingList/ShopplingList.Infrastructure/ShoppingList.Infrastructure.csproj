@@ -46,8 +46,11 @@
   <ItemGroup>
     <Compile Include="IModuleConfiguration.cs" />
     <Compile Include="Interfaces\IRepositoryBase.cs" />
+    <Compile Include="Interfaces\IShoppingListRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
     <Compile Include="Models\Security\LoginRequest.cs" />
+    <Compile Include="Models\ShoppingListModel.cs" />
+    <Compile Include="Models\ShopplingListItemModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
