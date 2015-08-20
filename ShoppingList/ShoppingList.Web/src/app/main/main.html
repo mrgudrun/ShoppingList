@@ -1,3 +1,79 @@
-﻿<div class="container" ng-app="app.main" ng-controller="MainController">
-    Sup world!?
+﻿
+<style>
+    .panel-heading {
+  text-overflow:ellipsis;
+  white-space:nowrap;
+  overflow: hidden;
+}
+
+</style>
+
+<div class="container" ng-app="app.main" ng-controller="MainController">
+    <div class="row">
+        <div class="col-md-4" ng-repeat="shoppingList in model.shoppingLists">
+            <div class="panel panel-default">
+                <div class="panel-heading" ui-sref="index.compose({id:{{shoppingList.Id}}})">#{{shoppingList.Id}}</div>
+                <div class="panel-body">
+                    <p  ng-repeat="shoppingItem in shoppingList.ShoppingItems">
+                        {{shoppingItem.Name}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+            <!--<div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">This is a Very Long Title That Wraps in 2 Lines</div>
+                    <div class="panel-body">
+                        Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor.
+                        Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Title</div>
+                    <div class="panel-body">
+                        Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor.
+                        Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Title</div>
+                    <div class="panel-body">
+                        Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor.
+                        Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Title</div>
+                    <div class="panel-body">
+                        Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor.
+                        Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">This is a Very Long Title That Wraps in 2 Lines</div>
+                    <div class="panel-body">
+                        Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor.
+                        Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Title</div>
+                    <div class="panel-body">
+                        Nullam sapien massa, aliquam in cursus ut, ullamcorper in tortor.
+                        Aliquam mauris arcu, tristique a lobortis vitae, condimentum feugiat justo.
+                    </div>
+                </div>
+            </div>-->
+        </div>
 </div>

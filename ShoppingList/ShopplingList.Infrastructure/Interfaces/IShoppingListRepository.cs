@@ -9,7 +9,9 @@ namespace ShoppingList.Infrastructure.Interfaces
 {
     public interface IShoppingListRepository : IRepositoryBase<ShoppingListModel>
     {
-        ShoppingListModel CreateEmptyList();
+        ShoppingListModel CreateEmptyList(int ownerUserId);
+
+        List<ShoppingListModel> GetByUserId(int userId);
     }
     public interface IShoppingItemRepository : IRepositoryBase<ShoppingItemModel>
     {

@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using ShoppingList.Infrastructure.Interfaces;
 using ShoppingList.Infrastructure.Models;
+using ShoppingList.WebAPI.Models.Request;
 
 namespace ShoppingList.WebAPI.Controllers
 {
@@ -18,9 +19,22 @@ namespace ShoppingList.WebAPI.Controllers
             _shoppingListRepository = shoppingListRepository;
         }
 
-        public ShoppingListModel Create()
+        public ShoppingListModel Create([FromBody] CreateShoppingListRequest request)
         {
-            return _shoppingListRepository.CreateEmptyList();
+            return _shoppingListRepository.CreateEmptyList(request.UserId);
+        }
+
+        public ShoppingListModel Get(int id)
+        {
+            return _shoppingListRepository.GetById(id);
+        }
+
+        //'/webapi/api/Shopplinglist/getbyuserid/' + userId
+        [Route("api/Shoppinglist/getbyuserid/{userId}")]
+        [HttpGet]
+        public List<ShoppingListModel> GetShoppingListsByUserId(int userId)
+        {
+            return _shoppingListRepository.GetByUserId(userId);
         }
     }
 }

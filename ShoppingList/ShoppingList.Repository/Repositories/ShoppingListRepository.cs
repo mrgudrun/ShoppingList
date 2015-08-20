@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using ShoppingList.Infrastructure.Interfaces;
 using ShoppingList.Infrastructure.Models;
 using ShoppingList.EFModel;
@@ -13,19 +15,26 @@ namespace ShoppingList.Repository.Repositories
         {
 
         }
-        public ShoppingListModel GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
 
-        public ShoppingListModel CreateEmptyList()
+        public ShoppingListModel CreateEmptyList(int ownerUserId)
         {
             using (var context = new ShoppingListContext())
             {
-                var list = new EFModel.Entities.ShoppingList();
+                var owner = context.Users.Find(ownerUserId);
+                var list = new EFModel.Entities.ShoppingList() {Owner = owner };
                 context.ShoppingLists.Add(list);
                 context.SaveChanges();
                 return Map(list);
+            }
+        }
+
+        public List<ShoppingListModel> GetByUserId(int userId)
+        {
+            using (var context = new ShoppingListContext())
+            {
+                var shoppinglists = context.ShoppingLists.Include("Items").ToList();
+                var toModel = shoppinglists.Select(sl => Map(sl)).ToList();
+                return toModel;
             }
         }
     }

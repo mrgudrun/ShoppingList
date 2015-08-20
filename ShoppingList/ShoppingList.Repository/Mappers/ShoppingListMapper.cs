@@ -12,7 +12,17 @@ namespace ShoppingList.Repository.Mappers
     {
         public ShoppingListModel Map(EFModel.Entities.ShoppingList efShoppingList)
         {
-            var model = new ShoppingListModel { Id = efShoppingList.Id };
+            var model = new ShoppingListModel
+            {
+                Id = efShoppingList.Id,
+                Name = efShoppingList.Name  
+            };
+            var itemMapper = new ShoppingItemMapper();
+
+            foreach (var shoppingItem in efShoppingList.Items)
+            {
+                model.ShoppingItems.Add(itemMapper.Map(shoppingItem));
+            }
             return model;
         }
     }

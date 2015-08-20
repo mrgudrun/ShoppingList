@@ -14,8 +14,11 @@ namespace ShoppingList.EFModel.Entities
         }
         public int Id { get; set; }
 
+
+        public User Owner { get; set; }
+
         public string Name { get; set; }
 
-        public ICollection<ShoppingItem> Items { get; set; }
+        public virtual ICollection<ShoppingItem> Items { get; set; }
     }
 }

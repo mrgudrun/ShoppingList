@@ -22,7 +22,7 @@ angular.module('app', ['ui.router', 'app.login', 'app.signUp', 'app.navigation',
             templateUrl: "app/main/main.html"
         })
         .state('index.compose', {
-            url: "/compose",
+            url: "/compose/:id",
             templateUrl: "app/shoppinglist/compose.html"
         });
 

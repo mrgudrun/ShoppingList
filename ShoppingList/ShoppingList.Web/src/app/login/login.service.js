@@ -14,6 +14,7 @@ angular.module('app.login', [])
                 .success(function (userModel) {
                     callback(userModel);
                     $rootScope.globals.currentUser.Username = userModel.Username;
+                    $rootScope.globals.currentUser.id = userModel.UserId;
                     $cookieStore.put('globals', $rootScope.globals);
                     loggedInUserFactory.refresh();
                 })

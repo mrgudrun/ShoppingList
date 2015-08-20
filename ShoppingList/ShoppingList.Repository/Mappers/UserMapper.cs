@@ -10,6 +10,7 @@ namespace ShoppingList.Repository.Mappers
         {
             var userModel = new UserModel();
             userModel.Username = efUser.Username;
+            userModel.UserId = efUser.Id;
             return userModel;
         }
     }

@@ -5,22 +5,44 @@
 
 angular.module('app.compose').controller('ComposeController',
     
-        function ($scope, $location, $filter, composeService) {
+        function ($scope, $location, $filter, composeService, $rootScope, $stateParams) {
             console.log("ComoposeController");
 
+             
+
             var model = $scope.model = {
-                shoppingListId: 0,
+                shoppingListId: $stateParams.id,
                 name: "",
                 shoppingItems: [],
-                itemEdit:""
+                itemEdit: "",
+                userId: $rootScope.globals.currentUser.id
             }
 
-            composeService.CreateShoppingList(function (id) {
-                console.log(id);
-                model.shoppingListId = id;
-            });
+            console.log("id:" + model.shoppingListId);
 
-            //$scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
+
+            if (model.shoppingListId == 0) {
+                composeService.CreateShoppingList(model.userId, function(id) {
+                    console.log(id);
+                    model.shoppingListId = id;
+                });
+            } else {
+                composeService.LoadShoppingList(model.shoppingListId, function (shoppingList) {
+                    console.log(shoppingList);
+                    angular.forEach(shoppingList.ShoppingItems, function (item) {
+                        var shoppingItem = {
+                            name: item.Name,
+                            Id: item.Id,
+                            completed: false
+                        }
+                        model.shoppingItems.push(shoppingItem);
+                    });
+
+                });
+            }
+
+
+//$scope.remainingCount = $filter('filter')(todos, { completed: false }).length;
             //$scope.editedTodo = null;
 
             //if ($location.path() === '') {
