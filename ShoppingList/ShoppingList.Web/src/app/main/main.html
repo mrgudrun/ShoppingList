@@ -1,26 +1,94 @@
 ﻿
 <style>
-    .panel-heading {
-  text-overflow:ellipsis;
-  white-space:nowrap;
-  overflow: hidden;
+    .clickable
+{
+    cursor: pointer;
 }
 
+.clickable .glyphicon
+{
+    background: rgba(0, 0, 0, 0.15);
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 4px
+}
+
+.panel-heading span
+{
+    margin-top: -23px;
+    font-size: 15px;
+    margin-right: -9px;
+}
+a.clickable { color: inherit; }
+a.clickable:hover { text-decoration:none; }
+
 </style>
+<script>
+    //$(document).on('click', '.panel-heading span.clickable', function (e) {
+    //    var $this = $(this);
+    //    if (!$this.hasClass('panel-collapsed')) {
+    //        $this.parents('.panel').find('.panel-body').slideUp();
+    //        $this.addClass('panel-collapsed');
+    //        $this.find('i').removeClass('glyphicon-minus').addClass('glyphicon-plus');
+    //    } else {
+    //        $this.parents('.panel').find('.panel-body').slideDown();
+    //        $this.removeClass('panel-collapsed');
+    //        $this.find('i').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+    //    }
+    //});
+    //$(document).on('click', '.panel div.clickable', function (e) {
+    //    var $this = $(this);
+    //    if (!$this.hasClass('panel-collapsed')) {
+    //        $this.parents('.panel').find('.panel-body').slideUp();
+    //        $this.addClass('panel-collapsed');
+    //        $this.find('i').removeClass('glyphicon-minus').addClass('glyphicon-plus');
+    //    } else {
+    //        $this.parents('.panel').find('.panel-body').slideDown();
+    //        $this.removeClass('panel-collapsed');
+    //        $this.find('i').removeClass('glyphicon-plus').addClass('glyphicon-minus');
+    //    }
+    //});
+    //$(document).ready(function () {
+    //    $('.panel-heading span.clickable').click();
+    //    $('.panel div.clickable').click();
+    //});
+
+</script>
 
 <div class="container" ng-app="app.main" ng-controller="MainController">
     <div class="row">
         <div class="col-md-4" ng-repeat="shoppingList in model.shoppingLists">
-            <div class="panel panel-default">
-                <div class="panel-heading" ui-sref="index.compose({id:{{shoppingList.Id}}})">#{{shoppingList.Id}}</div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h3 class="panel-title" ui-sref="index.compose({id:{{shoppingList.Id}}})">
+                        #{{shoppingList.Id}}{{testing}}
+                    </h3>
+
+                    <span class="pull-right clickable" ng-click="removeShoppingList(shoppingList)">
+                        <i class="glyphicon glyphicon-remove-circle"></i>
+                    </span>
+                </div>
+                  
+                    <div class="panel-body">
+                        <p ng-repeat="shoppingItem in shoppingList.ShoppingItems">
+                            {{shoppingItem.Name}}
+                        </p>
+                    </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h3 class="panel-title">
+                        Panel 2
+                    </h3>
+                    <span class="pull-right"><i class="glyphicon glyphicon-minus"></i></span>
+                </div>
                 <div class="panel-body">
-                    <p  ng-repeat="shoppingItem in shoppingList.ShoppingItems">
-                        {{shoppingItem.Name}}
-                    </p>
+                    Panel content
                 </div>
             </div>
         </div>
-
             <!--<div class="col-md-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">This is a Very Long Title That Wraps in 2 Lines</div>

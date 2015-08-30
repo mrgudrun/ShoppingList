@@ -21,6 +21,9 @@ namespace ShoppingList.WebAPI
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             // Format enums as string (JSON)
             config.Formatters.JsonFormatter.SerializerSettings.Converters.Add(new Newtonsoft.Json.Converters.StringEnumConverter());
+
+           // config.EnableCors();
+
             // Web API routes
             config.MapHttpAttributeRoutes();
 

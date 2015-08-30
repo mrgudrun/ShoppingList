@@ -11,7 +11,8 @@ namespace ShoppingList.Repository
         {
             container.Register<IUserRepository, UserRespository>(); 
             container.Register<IShoppingItemRepository, ShoppingItemRepository>(); 
-            container.Register<IShoppingListRepository, ShoppingListRepository>(); 
+            container.Register<IShoppingListRepository, ShoppingListRepository>();
+            container.Register<IFriendRepository, FriendRepository>();
         }
     }
 }

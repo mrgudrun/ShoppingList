@@ -24,6 +24,7 @@ namespace ShoppingList.EFModel
         public DbSet<User> Users { get; set; }
         public DbSet<Entities.ShoppingList> ShoppingLists { get; set; }
         public DbSet<ShoppingItem> Items { get; set; }
+        public DbSet<Friend> Friends { get; set; }
 
     }
 }

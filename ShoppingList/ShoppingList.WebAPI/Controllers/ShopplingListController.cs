@@ -7,9 +7,11 @@ using System.Web.Http;
 using ShoppingList.Infrastructure.Interfaces;
 using ShoppingList.Infrastructure.Models;
 using ShoppingList.WebAPI.Models.Request;
+using System.Web.Http.Cors;
 
 namespace ShoppingList.WebAPI.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class ShopplingListController : ApiController
     {
         private IShoppingListRepository _shoppingListRepository;
@@ -35,6 +37,14 @@ namespace ShoppingList.WebAPI.Controllers
         public List<ShoppingListModel> GetShoppingListsByUserId(int userId)
         {
             return _shoppingListRepository.GetByUserId(userId);
+        }
+ [HttpDelete]
+        public IHttpActionResult Delete(int id)
+        {
+            var response = new HttpResponseMessage();
+            
+            return Ok(_shoppingListRepository.Delete(id));
+
         }
     }
 }

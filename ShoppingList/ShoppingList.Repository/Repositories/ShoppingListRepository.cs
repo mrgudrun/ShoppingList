@@ -16,6 +16,21 @@ namespace ShoppingList.Repository.Repositories
 
         }
 
+        public override bool Delete(int id)
+        {
+            using (var context = new ShoppingListContext())
+            {
+                var sl = context.ShoppingLists.Find(id);
+                
+                foreach (var item in sl.Items.ToList())
+                {
+                    sl.Items.Remove(item);
+                };
+                context.ShoppingLists.Remove(sl);
+                context.SaveChanges();
+                return true;
+            }
+        }
         public ShoppingListModel CreateEmptyList(int ownerUserId)
         {
             using (var context = new ShoppingListContext())
@@ -32,7 +47,8 @@ namespace ShoppingList.Repository.Repositories
         {
             using (var context = new ShoppingListContext())
             {
-                var shoppinglists = context.ShoppingLists.Include("Items").ToList();
+                var owner = context.Users.Find(userId);
+                var shoppinglists = context.ShoppingLists.Include("Items").Where(x => x.Owner.Id == userId).ToList();
                 var toModel = shoppinglists.Select(sl => Map(sl)).ToList();
                 return toModel;
             }

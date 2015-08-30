@@ -29,7 +29,7 @@ namespace ShoppingList.Repository.Repositories
             }
         }
 
-        public bool Delete(int id)
+        public virtual bool Delete(int id)
         {
             using (var dbContext = new ShoppingListContext())
             {

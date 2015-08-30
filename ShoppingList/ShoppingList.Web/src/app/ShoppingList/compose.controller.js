@@ -15,7 +15,9 @@ angular.module('app.compose').controller('ComposeController',
                 name: "",
                 shoppingItems: [],
                 itemEdit: "",
-                userId: $rootScope.globals.currentUser.id
+                userId: $rootScope.globals.currentUser.id,
+                isTitleEditMode: false,
+                title:"Testing"
             }
 
             console.log("id:" + model.shoppingListId);
@@ -58,6 +60,10 @@ angular.module('app.compose').controller('ComposeController',
             //$scope.$watch('remainingCount == 0', function (val) {
             //    $scope.allChecked = val;
             //});
+
+            $scope.titleChanged = function () {
+                model.isTitleEditMode = false;
+            }
 
             $scope.addShoppingItem = function () {
                 console.log("enter pressed");

@@ -1,9 +1,44 @@
 ﻿<div class="container" ng-app="app.composetest" ng-controller="ComposeController">
 
-    <div>
-        <h1>todos</h1>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <lable class="panel-title" ng-hide="model.isTitleEditMode" ng-click="model.isTitleEditMode=!model.isTitleEditMode">{{model.title}}</lable>
+                <form ng-submit="titleChanged()">
+                    <input class="panel-title" placeholder="Title" ng-model="model.title" ng-show="model.isTitleEditMode" />
+                </form>
+            </div>
+            <div class="panel-body">
+                <form id="todo-form" ng-submit="addShoppingItem()">
+                    <input class="col-md-12 h5" placeholder="What needs to be bought?" ng-model="model.itemEdit" autofocus>
+                </form>
+                <div ng-show="model.shoppingItems.length"> 
+                    <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
+                    <label for="toggle-all">Mark all as complete</label>
+                    <div class="" ng-repeat="shoppingItem in model.shoppingItems">
+                        <div>
+                            <input type="checkbox">
+                            <label>{{shoppingItem.name}}</label>
+                            <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeItem(shoppingItem)"></span>
+                        </div>
+                    </div>
+                    <!--<ul class="list-group">
+                        <li ng-repeat="shoppingItem in model.shoppingItems">
+               
+                        </li>
+                    </ul>-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div>
+        <h1 ng-hide="model.isTitleEditMode" ng-click="model.isTitleEditMode=!model.isTitleEditMode">{{model.title}}</h1>
+        <form ng-submit="titleChanged()" >
+            <input class="h1" placeholder="Title" ng-model="model.title" ng-show="model.isTitleEditMode" />
+        </form>
         <form id="todo-form" ng-submit="addShoppingItem()">
-            <input id="new-todo" placeholder="What needs to be bought?" ng-model="model.itemEdit" autofocus>
+            <input  id="new-todo" placeholder="What needs to be bought?" ng-model="model.itemEdit"  autofocus>
         </form>
     </div>
 
@@ -17,10 +52,7 @@
                     <label >{{shoppingItem.name}}</label>
                     <span class="glyphicon glyphicon-remove-circle" ng-click="removeItem(shoppingItem)"></span>
                 </div>
-                <!--<form ng-submit="doneEditing(todo)">
-                    <input class="edit" ng-trim="false" ng-model="todo.title" ng-blur="doneEditing(todo)" todo-escape="revertEditing(todo)" todo-focus="todo == editedTodo">
-                </form>-->
             </li>
         </ul>
-    </div>
+    </div>-->
 </div>

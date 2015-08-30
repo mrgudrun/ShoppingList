@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entities\Friend.cs" />
     <Compile Include="Entities\Item.cs" />
     <Compile Include="Entities\ShoppingList.cs" />
     <Compile Include="Migrations\201507281814491_InitialDbSetup.cs" />
@@ -66,6 +67,10 @@
     <Compile Include="Migrations\201508181037144_extendedShoppingList.cs" />
     <Compile Include="Migrations\201508181037144_extendedShoppingList.Designer.cs">
       <DependentUpon>201508181037144_extendedShoppingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201508302014026_AddedFriend.cs" />
+    <Compile Include="Migrations\201508302014026_AddedFriend.Designer.cs">
+      <DependentUpon>201508302014026_AddedFriend.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="ShoppingListContext.cs" />
@@ -88,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201508181037144_extendedShoppingList.resx">
       <DependentUpon>201508181037144_extendedShoppingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201508302014026_AddedFriend.resx">
+      <DependentUpon>201508302014026_AddedFriend.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
