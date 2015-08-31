@@ -1,4 +1,21 @@
-﻿<div class="container" ng-app="app.composetest" ng-controller="ComposeController">
+﻿
+
+<div class="container" ng-app="app.composetest" ng-controller="ComposeController">
+    <script type="text/ng-template" id="myFriends.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Add friends to shoppinglist</h3>
+        </div>
+        <div class="modal-body">
+            <ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="addFriend(item)">{{ item.username }}</a>
+                </li>
+            </ul>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
 
     <div class="col-md-4">
         <div class="panel panel-info">
@@ -12,7 +29,7 @@
                 <form id="todo-form" ng-submit="addShoppingItem()">
                     <input class="col-md-12 h5" placeholder="What needs to be bought?" ng-model="model.itemEdit" autofocus>
                 </form>
-                <div ng-show="model.shoppingItems.length"> 
+                <div ng-show="model.shoppingItems.length">
                     <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
                     <label for="toggle-all">Mark all as complete</label>
                     <div class="" ng-repeat="shoppingItem in model.shoppingItems">
@@ -24,35 +41,19 @@
                     </div>
                     <!--<ul class="list-group">
                         <li ng-repeat="shoppingItem in model.shoppingItems">
-               
+
                         </li>
                     </ul>-->
                 </div>
             </div>
         </div>
     </div>
-
-    <!--<div>
-        <h1 ng-hide="model.isTitleEditMode" ng-click="model.isTitleEditMode=!model.isTitleEditMode">{{model.title}}</h1>
-        <form ng-submit="titleChanged()" >
-            <input class="h1" placeholder="Title" ng-model="model.title" ng-show="model.isTitleEditMode" />
-        </form>
-        <form id="todo-form" ng-submit="addShoppingItem()">
-            <input  id="new-todo" placeholder="What needs to be bought?" ng-model="model.itemEdit"  autofocus>
-        </form>
+    <div class="col-md-4">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                My friends
+                <button class="btn" ng-click="model.findFriend()">+</button>
+            </div>
+        </div>
     </div>
-
-    <div ng-show="model.shoppingItems.length">
-        <input id="toggle-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)">
-        <label for="toggle-all">Mark all as complete</label>
-        <ul class="list-group">
-            <li class="list-group-item" ng-repeat="shoppingItem in model.shoppingItems">
-                <div class="row">
-                    <input type="checkbox">
-                    <label >{{shoppingItem.name}}</label>
-                    <span class="glyphicon glyphicon-remove-circle" ng-click="removeItem(shoppingItem)"></span>
-                </div>
-            </li>
-        </ul>
-    </div>-->
 </div>

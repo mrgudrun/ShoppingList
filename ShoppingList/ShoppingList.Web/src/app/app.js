@@ -1,6 +1,6 @@
 ﻿
 'use strict';
-angular.module('app', ['ui.router', 'app.login', 'app.signUp', 'app.navigation', 'app.main','app.compose','base64', 'ngCookies']).config(function ($stateProvider, $urlRouterProvider) {
+angular.module('app', ['ui.router', 'app.login', 'app.signUp', 'app.navigation', 'app.main', 'app.compose', 'base64', 'ngCookies', 'ui.bootstrap']).config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider.state('login', {
             url: "/login",
             templateUrl: "app/login/login.html",
