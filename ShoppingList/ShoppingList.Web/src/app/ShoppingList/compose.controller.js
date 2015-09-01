@@ -13,8 +13,14 @@ angular.module('app.compose').controller('ComposeController',
                 itemEdit: "",
                 userId: $rootScope.globals.currentUser.id,
                 isTitleEditMode: false,
-                title: "Testing"
+                title: "",
+                titleLostFocus: {}
             }
+
+            model.titleLostFocus = function () {
+                console.log(model.shoppingListId + " " + model.title);
+                composeService.UpdateTitle(model.shoppingListId, model.title);
+            };
 
             model.findFriend = function () {
                 $modal.open({
@@ -38,6 +44,7 @@ angular.module('app.compose').controller('ComposeController',
             } else {
                 composeService.LoadShoppingList(model.shoppingListId, function (shoppingList) {
                     console.log(shoppingList);
+                    model.title = shoppingList.Name;
                     angular.forEach(shoppingList.ShoppingItems, function (item) {
                         var shoppingItem = {
                             name: item.Name,

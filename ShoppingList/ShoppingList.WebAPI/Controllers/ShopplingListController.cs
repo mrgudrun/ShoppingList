@@ -8,6 +8,7 @@ using ShoppingList.Infrastructure.Interfaces;
 using ShoppingList.Infrastructure.Models;
 using ShoppingList.WebAPI.Models.Request;
 using System.Web.Http.Cors;
+using ShoppingList.Infrastructure.Models.Security;
 
 namespace ShoppingList.WebAPI.Controllers
 {
@@ -38,6 +39,13 @@ namespace ShoppingList.WebAPI.Controllers
         {
             return _shoppingListRepository.GetByUserId(userId);
         }
+
+        [HttpPut]
+        public bool UpdateTitle(int id, [FromBody] ShoppingListUpdateRequest model)
+        {
+            return _shoppingListRepository.UpdateTitle(id, model.Name);
+        }
+
  [HttpDelete]
         public IHttpActionResult Delete(int id)
         {

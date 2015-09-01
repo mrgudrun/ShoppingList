@@ -5,8 +5,6 @@ angular.module('app.main', []).controller('MainController', function (mainServic
     var model = $scope.model = {
         shoppingLists: []
     };
-    console.log("æøå")
-    $scope.testing = "æ<strong>ø</strong>å";
     mainService.getShoppingLists($rootScope.globals.currentUser.id, function (response) {
 
         $scope.removeShoppingList = function (item) {
@@ -21,8 +19,6 @@ angular.module('app.main', []).controller('MainController', function (mainServic
         angular.forEach(response, function(value) {
             model.shoppingLists.push(value);
         });
-        console.log(model);
+        console.log(response);
     });
-
-
 });

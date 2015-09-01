@@ -53,5 +53,16 @@ namespace ShoppingList.Repository.Repositories
                 return toModel;
             }
         }
+
+        public bool UpdateTitle(int id, string title)
+        {
+            using (var context = new ShoppingListContext())
+            {
+                var sl = context.ShoppingLists.Find(id);
+                sl.Name = title;
+                context.SaveChanges();
+                return true;
+            }
+        }
     }
 }

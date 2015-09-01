@@ -5,6 +5,12 @@ angular.module('app.compose', []).factory('composeService', function ($http) {
 
     var service = {};
 
+    service.UpdateTitle = function (shoppingListId, model) {
+        $http.put('/webapi/api/Shopplinglist/' + shoppingListId, {name: model}).success(function (response) {
+            callback(response);
+        });
+    };
+
     service.CreateShoppingList = function (userId, callback) {
         $http.post('/webapi/api/Shopplinglist/create', { UserId: userId }).success(function (response) {
             callback(response.Id);

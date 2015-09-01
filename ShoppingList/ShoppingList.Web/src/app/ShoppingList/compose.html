@@ -22,7 +22,7 @@
             <div class="panel-heading">
                 <lable class="panel-title" ng-hide="model.isTitleEditMode" ng-click="model.isTitleEditMode=!model.isTitleEditMode">{{model.title}}</lable>
                 <form ng-submit="titleChanged()">
-                    <input class="panel-title" placeholder="Title" ng-model="model.title" ng-show="model.isTitleEditMode" />
+                    <input class="panel-title" placeholder="Title" ng-model="model.title" ng-show="model.isTitleEditMode" ng-blur="model.titleLostFocus()" />
                 </form>
             </div>
             <div class="panel-body">
@@ -39,11 +39,6 @@
                             <span class="glyphicon glyphicon-remove-circle pull-right" ng-click="removeItem(shoppingItem)"></span>
                         </div>
                     </div>
-                    <!--<ul class="list-group">
-                        <li ng-repeat="shoppingItem in model.shoppingItems">
-
-                        </li>
-                    </ul>-->
                 </div>
             </div>
         </div>

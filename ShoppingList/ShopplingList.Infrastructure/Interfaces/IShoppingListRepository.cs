@@ -12,6 +12,7 @@ namespace ShoppingList.Infrastructure.Interfaces
         ShoppingListModel CreateEmptyList(int ownerUserId);
 
         List<ShoppingListModel> GetByUserId(int userId);
+        bool UpdateTitle(int id, string title);
     }
     public interface IShoppingItemRepository : IRepositoryBase<ShoppingItemModel>
     {
