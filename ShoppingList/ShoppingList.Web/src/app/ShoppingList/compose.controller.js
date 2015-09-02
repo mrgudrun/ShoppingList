@@ -8,18 +8,24 @@ angular.module('app.compose').controller('ComposeController',
 
             var model = $scope.model = {
                 shoppingListId: $stateParams.id,
-                name: "",
+                name: "Untitled",
                 shoppingItems: [],
                 itemEdit: "",
                 userId: $rootScope.globals.currentUser.id,
-                isTitleEditMode: false,
-                title: "",
-                titleLostFocus: {}
+                isNameEditMode: false,
+                nameLostFocus: {}
             }
 
-            model.titleLostFocus = function () {
-                console.log(model.shoppingListId + " " + model.title);
-                composeService.UpdateTitle(model.shoppingListId, model.title);
+            model.nameLostFocus = function () {
+                model.isNameEditMode = false;
+                console.log(model.shoppingListId + " " + model.name);
+                if (model.shoppingListId == 0) { //create shoppinglist
+                    composeService.CreateShoppingList(model, function (id) {
+                    model.shoppingListId = id})
+                }
+                else{
+                    composeService.UpdateName(model.shoppingListId, model.name);
+                }
             };
 
             model.findFriend = function () {
@@ -36,15 +42,10 @@ angular.module('app.compose').controller('ComposeController',
                 });
             };
 
-            if (model.shoppingListId == 0) {
-                composeService.CreateShoppingList(model.userId, function (id) {
-                    console.log(id);
-                    model.shoppingListId = id;
-                });
-            } else {
+        if (model.shoppingListId > 0) {
                 composeService.LoadShoppingList(model.shoppingListId, function (shoppingList) {
                     console.log(shoppingList);
-                    model.title = shoppingList.Name;
+                    model.name = shoppingList.Name;
                     angular.forEach(shoppingList.ShoppingItems, function (item) {
                         var shoppingItem = {
                             name: item.Name,
@@ -53,12 +54,11 @@ angular.module('app.compose').controller('ComposeController',
                         }
                         model.shoppingItems.push(shoppingItem);
                     });
-
                 });
             }
 
-            $scope.titleChanged = function () {
-                model.isTitleEditMode = false;
+        $scope.nameChanged = function () {
+            model.isnameEditMode = false;
             }
 
             $scope.addShoppingItem = function () {
@@ -72,9 +72,11 @@ angular.module('app.compose').controller('ComposeController',
                     completed: false
                 }
                 model.shoppingItems.push(shoppingItem);
-                composeService.CreateShoppingItem(model.shoppingListId, newItem, function (id) {
-                    shoppingItem.Id = id;
-                });
+                if (model.shoppingListId > 0) {
+                    composeService.CreateShoppingItem(model.shoppingListId, newItem, function (id) {
+                        shoppingItem.Id = id;
+                    });
+                };
 
                 model.itemEdit = "";
                 $scope.remainingCount++;
@@ -89,7 +91,7 @@ angular.module('app.compose').controller('ComposeController',
             }
         });
 
-angular.module('app.compose').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+    angular.module('app.compose').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
 
     $scope.items = items;
     $scope.addFriend = function (friend) {

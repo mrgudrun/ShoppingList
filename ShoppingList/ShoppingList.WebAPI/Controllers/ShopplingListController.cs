@@ -22,9 +22,9 @@ namespace ShoppingList.WebAPI.Controllers
             _shoppingListRepository = shoppingListRepository;
         }
 
-        public ShoppingListModel Create([FromBody] CreateShoppingListRequest request)
+        public ShoppingListModel Create([FromBody]CreateShoppingListRequest request)
         {
-            return _shoppingListRepository.CreateEmptyList(request.UserId);
+            return _shoppingListRepository.CreateEmptyList(request);
         }
 
         public ShoppingListModel Get(int id)

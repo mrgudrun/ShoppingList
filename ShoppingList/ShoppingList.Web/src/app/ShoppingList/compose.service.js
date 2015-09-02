@@ -5,14 +5,30 @@ angular.module('app.compose', []).factory('composeService', function ($http) {
 
     var service = {};
 
-    service.UpdateTitle = function (shoppingListId, model) {
+    var createShoppingListRequest = function (shoppingList) {
+        var request = {
+            userId: shoppingList.userId,
+            shoppingListId: shoppingList.shoppingListId,
+            name: shoppingList.name,
+            shoppingItems: []
+        };
+        for (var i = 0; i < shoppingList.shoppingItems.length; i++) {
+            request.shoppingItems.push({ name: shoppingList.shoppingItems[i].name })
+
+        }
+        return request;
+    };
+
+
+
+    service.UpdateName = function (shoppingListId, model) {
         $http.put('/webapi/api/Shopplinglist/' + shoppingListId, {name: model}).success(function (response) {
             callback(response);
         });
     };
 
-    service.CreateShoppingList = function (userId, callback) {
-        $http.post('/webapi/api/Shopplinglist/create', { UserId: userId }).success(function (response) {
+    service.CreateShoppingList = function (shoppingList, callback) {
+        $http.post('/webapi/api/Shopplinglist/create', createShoppingListRequest(shoppingList)).success(function (response) {
             callback(response.Id);
         });
     };

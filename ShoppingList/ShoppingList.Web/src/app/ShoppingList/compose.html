@@ -20,9 +20,9 @@
     <div class="col-md-4">
         <div class="panel panel-info">
             <div class="panel-heading">
-                <lable class="panel-title" ng-hide="model.isTitleEditMode" ng-click="model.isTitleEditMode=!model.isTitleEditMode">{{model.title}}</lable>
-                <form ng-submit="titleChanged()">
-                    <input class="panel-title" placeholder="Title" ng-model="model.title" ng-show="model.isTitleEditMode" ng-blur="model.titleLostFocus()" />
+                <lable class="panel-title" ng-hide="model.isNameEditMode" ng-click="model.isNameEditMode=!model.isNameEditMode">{{model.name}}</lable>
+                <form ng-submit="nameChanged()">
+                    <input class="panel-name" placeholder="Name" ng-model="model.name" ng-show="model.isNameEditMode" ng-blur="model.nameLostFocus()" />
                 </form>
             </div>
             <div class="panel-body">

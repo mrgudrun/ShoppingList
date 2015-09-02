@@ -6,6 +6,7 @@ using ShoppingList.Infrastructure.Models;
 using ShoppingList.EFModel;
 using ShoppingList.Repository.Mappers;
 using ShoppingList = ShoppingList.EFModel.Entities.ShoppingList;
+using ShoppingList.WebAPI.Models.Request;
 
 namespace ShoppingList.Repository.Repositories
 {
@@ -31,12 +32,19 @@ namespace ShoppingList.Repository.Repositories
                 return true;
             }
         }
-        public ShoppingListModel CreateEmptyList(int ownerUserId)
+        public ShoppingListModel CreateEmptyList(CreateShoppingListRequest request)
         {
             using (var context = new ShoppingListContext())
             {
-                var owner = context.Users.Find(ownerUserId);
-                var list = new EFModel.Entities.ShoppingList() {Owner = owner };
+                var owner = context.Users.Find(request.UserId);
+                var list = new EFModel.Entities.ShoppingList() {Owner = owner,
+                Name = request.Name};
+              
+              var items =  request.ShoppingItems.Select(x => new EFModel.Entities.ShoppingItem() {Name = x.Name });
+                foreach(var i in items)
+                {
+                    list.Items.Add(i);
+                }
                 context.ShoppingLists.Add(list);
                 context.SaveChanges();
                 return Map(list);
