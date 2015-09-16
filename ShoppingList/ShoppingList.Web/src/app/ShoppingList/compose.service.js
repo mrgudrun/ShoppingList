@@ -51,6 +51,19 @@ angular.module('app.compose', []).factory('composeService', function ($http) {
 
         $http.delete("/webapi/api/shoppingitem/"+itemId+"/");
     }
+
+    service.AddFriendToShoppingList = function (shoppingListId, friendId) {
+        $http.put('/webapi/api/Shopplinglist/'+id+ "/AddFriend/friendId").success(function (response) {
+            callback(response.Id);
+        });
+    };
+
+    service.GetFriends = function (userId, callback) {
+        $http.get('/webapi/api/user/' + userId + "/friends").success(function (response) {
+            callback(response);
+        });
+    };
+
     return service;
 
 });

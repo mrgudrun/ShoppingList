@@ -55,5 +55,19 @@ namespace ShoppingList.Repository.Repositories
                 return user != null ? Map(user) : null;
             }
         }
+
+        public IEnumerable<FriendModel> GetFriends(int userId)
+        {
+            using (var dbContext = new ShoppingListContext())
+            {
+                var friendModels = new List<FriendModel>();
+                var friends = dbContext.Users.Find(userId).Friends;
+                foreach (var friend in friends)
+                {
+                    friendModels.Add(new FriendModel { Id = friend.Id, Name = friend.User.Username });
+                }
+                return friendModels;
+            }
+        }
     }
 }

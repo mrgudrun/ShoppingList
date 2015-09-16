@@ -1,6 +1,7 @@
 ﻿using ShoppingList.EFModel;
 using ShoppingList.EFModel.Entities;
 using ShoppingList.Infrastructure.Interfaces;
+using ShoppingList.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -7,8 +7,8 @@
         </div>
         <div class="modal-body">
             <ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="addFriend(item)">{{ item.username }}</a>
+                <li ng-repeat="friend in model.friends">
+                    <a href="#" ng-click="addFriend(friend)">{{ friend.name }}</a>
                 </li>
             </ul>
         </div>

@@ -13,7 +13,8 @@ angular.module('app.compose').controller('ComposeController',
                 itemEdit: "",
                 userId: $rootScope.globals.currentUser.id,
                 isNameEditMode: false,
-                nameLostFocus: {}
+                nameLostFocus: {},
+                friends:[]
             }
 
             model.nameLostFocus = function () {
@@ -36,7 +37,7 @@ angular.module('app.compose').controller('ComposeController',
                     size: 'sm',
                     resolve: {
                         items: function () {
-                            return $scope.items;
+                            return $scope.model.friends;
                         }
                     }
                 });
@@ -55,7 +56,16 @@ angular.module('app.compose').controller('ComposeController',
                         model.shoppingItems.push(shoppingItem);
                     });
                 });
+        }
+
+        composeService.GetFriends(model.userId, function (response) {
+            console.log("---");
+            for (var i = 0; i < response.length; i++) {
+                console.log(response[i]);
+                model.friends.push({ id: response[i].Id, name: response[i].Name });
             }
+        });
+
 
         $scope.nameChanged = function () {
             model.isnameEditMode = false;
@@ -92,8 +102,10 @@ angular.module('app.compose').controller('ComposeController',
         });
 
     angular.module('app.compose').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+        console.log(items)
+        $scope.model = {friends:[]};
 
-    $scope.items = items;
+    $scope.model.friends = items;
     $scope.addFriend = function (friend) {
         $scope.selected = friend;
         console.log($scope.selected);

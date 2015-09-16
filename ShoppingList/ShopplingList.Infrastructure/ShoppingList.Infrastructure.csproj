@@ -49,6 +49,7 @@
     <Compile Include="Interfaces\IRepositoryBase.cs" />
     <Compile Include="Interfaces\IShoppingListRepository.cs" />
     <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Models\FriendModel.cs" />
     <Compile Include="Models\Security\CreateShoppingListRequest.cs" />
     <Compile Include="Models\Security\FriendRequest.cs" />
     <Compile Include="Models\Security\LoginRequest.cs" />

@@ -1,4 +1,5 @@
 ﻿using ShoppingList.Infrastructure.Interfaces;
+using ShoppingList.Infrastructure.Models;
 using ShoppingList.Infrastructure.Models.Security;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,6 @@ namespace ShoppingList.WebAPI.Controllers
         {
             return _friendRepository.AddFriend(request.UserId, request.Friend);
         }
+
     }
 }

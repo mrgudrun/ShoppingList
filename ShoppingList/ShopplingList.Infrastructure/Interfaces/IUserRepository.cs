@@ -10,5 +10,7 @@ namespace ShoppingList.Infrastructure.Interfaces
 
         UserModel TryCreateUser(string username, string password, out string message);
 
+        IEnumerable<FriendModel> GetFriends(int userId);
+
     }
 }

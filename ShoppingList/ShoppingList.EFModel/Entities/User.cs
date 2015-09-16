@@ -18,7 +18,7 @@ namespace ShoppingList.EFModel.Entities
 
         public string Password { get; set; }
 
-        public ICollection<Friend> Friends { get; set; }
+        public virtual ICollection<Friend> Friends { get; set; }
 
     }
 }

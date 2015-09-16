@@ -46,6 +46,13 @@ namespace ShoppingList.WebAPI.Controllers
             return _shoppingListRepository.UpdateTitle(id, model.Name);
         }
 
+        [HttpPut]
+        public bool AddFriendToShoppingList(int id, int friendId)
+        {
+            return true;
+        }
+
+
  [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
