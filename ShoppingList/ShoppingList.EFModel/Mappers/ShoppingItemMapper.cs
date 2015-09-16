@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ShoppingList.EFModel.Entities;
+﻿using ShoppingList.EFModel.Entities;
 using ShoppingList.Infrastructure.Models;
 
 namespace ShoppingList.Repository.Mappers

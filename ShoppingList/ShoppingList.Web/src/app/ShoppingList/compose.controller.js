@@ -38,6 +38,9 @@ angular.module('app.compose').controller('ComposeController',
                     resolve: {
                         items: function () {
                             return $scope.model.friends;
+                        },
+                        shoppingListId: function () {
+                            return model.shoppingListId;
                         }
                     }
                 });
@@ -101,15 +104,19 @@ angular.module('app.compose').controller('ComposeController',
             }
         });
 
-    angular.module('app.compose').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+angular.module('app.compose').controller('ModalInstanceCtrl', function ($scope, $modalInstance, items, shoppingListId, composeService) {
         console.log(items)
         $scope.model = {friends:[]};
 
     $scope.model.friends = items;
     $scope.addFriend = function (friend) {
+
         $scope.selected = friend;
         console.log($scope.selected);
+        console.log(shoppingListId);
         $modalInstance.close($scope.selected);
+        composeService.AddFriendToShoppingList(shoppingListId, friend.id);
+
 
     }
  

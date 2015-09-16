@@ -61,10 +61,10 @@ namespace ShoppingList.Repository.Repositories
             using (var dbContext = new ShoppingListContext())
             {
                 var friendModels = new List<FriendModel>();
-                var friends = dbContext.Users.Find(userId).Friends;
+                var friends = dbContext.Users.Find(userId).Friends.Select(x => x.UserFriend);
                 foreach (var friend in friends)
                 {
-                    friendModels.Add(new FriendModel { Id = friend.Id, Name = friend.User.Username });
+                    friendModels.Add(new FriendModel { Id = friend.Id, Name = friend.Username });
                 }
                 return friendModels;
             }

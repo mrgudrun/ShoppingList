@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using ShoppingList.Infrastructure;
 using SimpleInjector;
 using SimpleInjector.Integration.WebApi;
+using SimpleInjector.Diagnostics;
 
 namespace ShoppingList.WebAPI
 {
@@ -30,6 +31,14 @@ namespace ShoppingList.WebAPI
             // Invoke configuration
             foreach (var module in modulesToConfigure)
                 module.Configure(container);
+
+            //var results = from result in Analyzer.Analyze(container)
+            //    let disposableController =
+            //        result is DisposableTransientComponentDiagnosticResult &&
+            //        typeof(ApiController).IsAssignableFrom(result.ServiceType)
+            //    where !disposableController
+            //    select result;
+
 
             // Verify all configured injections
             container.Verify();

@@ -53,7 +53,7 @@ angular.module('app.compose', []).factory('composeService', function ($http) {
     }
 
     service.AddFriendToShoppingList = function (shoppingListId, friendId) {
-        $http.put('/webapi/api/Shopplinglist/'+id+ "/AddFriend/friendId").success(function (response) {
+        $http.post('/webapi/api/Shopplinglist/' + shoppingListId + "/AddFriend/" + friendId).success(function (response) {
             callback(response.Id);
         });
     };

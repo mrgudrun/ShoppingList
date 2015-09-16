@@ -13,11 +13,11 @@ namespace ShoppingList.EFModel.Entities
 
         public int UserId { get; set; }
         [ForeignKey("UserId")]
-        public User User { get; set; }
+        public virtual User User { get; set; }
 
         public int UserFriendId { get; set; }
         [ForeignKey("UserFriendId")]
-        public User UserFriend { get; set; }
+        public virtual User UserFriend { get; set; }
 
     }
 }
